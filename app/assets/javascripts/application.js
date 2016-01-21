@@ -14,3 +14,68 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+//
+
+var showInterviewee = function() {
+  $('.interviewee').show();
+  $('.interviewer').hide();
+  $('.admin').hide();
+}
+
+var showInterviewer = function() {
+  $('.interviewee').hide();
+  $('.interviewer').show();
+  $('.admin').hide();
+}
+
+var showAdmin = function() {
+  $('.interviewee').hide();
+  $('.interviewer').hide();
+  $('.admin').show();
+}
+
+var ready;
+
+ready = function(){
+
+
+
+  $('.show-interviewee').click(function(){
+    showInterviewee();
+  });
+
+
+
+
+  $('.show-interviewer').click(function(){
+    showInterviewer();
+  });
+
+
+  $('.show-admin').click(function(){
+    showAdmin();
+  });
+
+};
+
+
+
+
+$(document).ready(ready);
+$(document).on('page:load', ready);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
