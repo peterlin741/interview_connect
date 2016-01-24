@@ -35,26 +35,34 @@ var showAdmin = function() {
   $('.admin').show();
 }
 
+var chooseUser = function() {
+
+  var selectedVal = "";
+  var selected = $("input[type='radio']:checked");
+  if (selected.length > 0) {
+      selectedVal = selected.val();
+  }
+  alert(selectedVal);
+}
+
 var ready;
 
 ready = function(){
-
-
 
   $('.show-interviewee').click(function(){
     showInterviewee();
   });
 
-
-
-
   $('.show-interviewer').click(function(){
     showInterviewer();
   });
 
-
   $('.show-admin').click(function(){
     showAdmin();
+  });
+
+  $(".choose_user").click(function(){
+      chooseUser();
   });
 
 };

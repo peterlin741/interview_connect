@@ -28,15 +28,6 @@
 
   <p>Interviewee</p>
 
-    <% if interviewee_signed_in? %>
-      <li>Signed in as <%= current_interviewee.email %></li>
-      <li><%= link_to 'Edit profile', edit_interviewee_registration_path %></li>
-      <li><%= link_to "Logout", destroy_interviewee_session_path, method: :delete %></li>
-      <li><%= link_to "New Post", new_interviewee_post_path(current_interviewee) %></li>
-    <% else %>
-      <li><%= link_to "Sign up", new_interviewee_registration_path %></li>
-      <li><%= link_to "Login", new_interviewee_session_path %></li>
-    <% end %>
   </div>
 
   <br /><br />
@@ -45,16 +36,6 @@
   <div class="interviewer">
 
     <p>Interviewer</p>
-
-    <% if interviewer_signed_in? %>
-      <li>Signed in as <%= current_interviewer.email %></li>
-      <li><%= link_to 'Edit profile', edit_interviewer_registration_path %></li>
-      <li><%= link_to "Logout", destroy_interviewer_session_path, method: :delete %></li>
-      <li><%= link_to "New Post", new_interviewer_post_path(current_interviewer) %></li>
-    <% else %>
-      <li><%= link_to "Sign up", new_interviewer_registration_path %></li>
-      <li><%= link_to "Login", new_interviewer_session_path %></li>
-    <% end %>
 
   </div>
 
@@ -65,21 +46,18 @@
 
     <p>Admin</p>
 
-    <% if admin_signed_in? %>
-      <li>Signed in as <%= current_admin.email %></li>
-      <li><%= link_to 'Edit profile', edit_admin_registration_path %></li>
-      <li><%= link_to "Logout", destroy_admin_session_path, method: :delete %></li>
-      <li><%= link_to "New Post", new_admin_post_path(current_admin) %></li>
-    <% else %>
-      <li><%= link_to "Sign up", new_admin_registration_path %></li>
-      <li><%= link_to "Login", new_admin_session_path %></li>
-    <% end %>
-  </div>
-
   <br /><br />
 
 
-
+        <% if user_signed_in? %>
+          <li>Signed in as <%= current_user.email %></li>
+          <li><%= link_to 'Edit profile', edit_user_registration_path %></li>
+          <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+          <li><%= link_to "New Post", new_user_post_path(current_user) %></li>
+        <% else %>
+          <li><%= link_to "Sign up", new_user_registration_path %></li>
+          <li><%= link_to "Login", new_user_session_path %></li>
+        <% end %>
 
 </body>
 </html>

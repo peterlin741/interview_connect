@@ -1,0 +1,23 @@
+<h2>Admins</h2>
+
+<ul>
+<% @admins.each do |u| %>
+  <li><%= u.name %></li>
+<% end %>
+</ul>
+
+<h2>Interviewees</h2>
+
+<ul>
+<% @interviewees.each do |u| %>
+  <li><%= u.name %></li>
+<% end %>
+</ul>
+
+<h2>Interviewers</h2>
+
+<ul>
+<% @interviewers.each do |u| %>
+  <li><%= u.name %></li>
+<% end %>
+</ul>
