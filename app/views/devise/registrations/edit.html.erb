@@ -4,6 +4,16 @@
   <%= devise_error_messages! %>
 
   <div class="field">
+    <%= f.label :first_name %> <br />
+    <%= f.text_field :first_name %> <br />
+  </div>
+  
+  <div class="field">
+    <%= f.label :last_name %> <br />
+    <%= f.text_field :last_name %> <br />
+  </div> 
+
+  <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true %>
   </div>
@@ -12,6 +22,19 @@
     <%= f.label :phone %> <br />
     <%= f.text_field :phone %> <br />
   </div> 
+
+  <div class="field">
+
+    <%= f.radio_button :user_type, "interviewee" %> Interviewee
+    <br />
+
+    <%= f.radio_button :user_type, "interviewer" %> Interviewer
+    <br />
+
+    <%= f.radio_button :user_type, "admin" %> Admin
+
+    <br /> <br />
+  </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>

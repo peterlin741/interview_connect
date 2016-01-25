@@ -53,7 +53,6 @@
           <li>Signed in as <%= current_user.email %></li>
           <li><%= link_to 'Edit profile', edit_user_registration_path %></li>
           <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
-          <li><%= link_to "New Post", new_user_post_path(current_user) %></li>
         <% else %>
           <li><%= link_to "Sign up", new_user_registration_path %></li>
           <li><%= link_to "Login", new_user_session_path %></li>

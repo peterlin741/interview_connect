@@ -14,31 +14,28 @@
   </div> 
 
   <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true %>
+  </div>
+
+  <div class="field">
     <%= f.label :phone %> <br />
     <%= f.text_field :phone %> <br />
   </div> 
 
   <div class="field">
 
-    <%= radio_button_tag(:user_type, "interviewee") %>
-    <%= label_tag(:user_type_interviewee, "Interviewee") %>
+    <%= f.radio_button :user_type, "interviewee" %> Interviewee
     <br />
 
-    <%= radio_button_tag(:user_type, "interviewer") %>
-    <%= label_tag(:user_type_interviewer, "Interviewer") %>
+    <%= f.radio_button :user_type, "interviewer" %> Interviewer
     <br />
 
-    <%= radio_button_tag(:user_type, "admin") %>
-    <%= label_tag(:user_type_admin, "Admin") %>
+    <%= f.radio_button :user_type, "admin" %> Admin
 
-  <br /> <br />
+    <br /> <br />
 
   </div> 
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
 
   <div class="field">
     <%= f.label :password %>
