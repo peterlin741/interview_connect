@@ -26,3 +26,32 @@ Admins
     <li><%= user.first_name %> <%= user.last_name %></li>
   <% end %>
 </ul>
+
+<br />
+
+Scheduled Interviews
+
+<ul>
+  <% @interviews_scheduled.each do |interview| %>
+    <li>Interviewee: <%= interview.interviewee_email %>,  Interviewer: <%= interview.interviewer_email %>, When: <%= interview.interview_date %></li>
+  <% end %>
+</ul>
+<br />
+
+Unscheduled Interviews
+
+<ul>
+  <% @interviews_unscheduled.each do |interview| %>
+    <li>Interviewee: <%= interview.interviewee_email %>,  Interviewer: <%= interview.interviewer_email %>, When: <%= interview.interview_date %></li>
+  <% end %>
+</ul>
+
+
+
+
+
+
+
+
+
+

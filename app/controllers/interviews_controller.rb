@@ -8,11 +8,10 @@ class InterviewsController < ApplicationController
     @interviewers = User.where(user_type: "interviewer")
     @admins = User.where(user_type: "admin")
 
+    @interviews = Interview.all
+    @interviews_scheduled = Interview.where(scheduled: true)
+    @interviews_unscheduled = Interview.where(scheduled: false)
     @interview = Interview.new
-
-  end
-
-  def show
 
   end
 
