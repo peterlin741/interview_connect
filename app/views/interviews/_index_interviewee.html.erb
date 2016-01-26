@@ -26,3 +26,19 @@
     <li><%= info%></li>
   <% end %>
 </ul>
+
+<br /><br />
+
+<h3>Requested Interview Times</h3>
+
+<ul>
+  <% @interviews_unscheduled_for_interviewee.each do |interview| %>
+    <% info = "Interviewee: " + interview.interviewee_email + ", Time: " + interview.interview_date.to_s %>
+    <li><%= info%></li>
+  <% end %>
+</ul>
+
+
+
+
+

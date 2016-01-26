@@ -13,6 +13,7 @@ class InterviewsController < ApplicationController
     @interviews_scheduled_for_interviewer = @interviews_scheduled.where(interviewer_email: current_user.email)
     @interviews_scheduled_for_interviewee = @interviews_scheduled.where(interviewee_email: current_user.email)
     @interviews_unscheduled = Interview.where(scheduled: false)
+    @interviews_unscheduled_for_interviewee = @interviews_unscheduled.where(interviewee_email: current_user.email)
     @interview = Interview.new
 
   end
