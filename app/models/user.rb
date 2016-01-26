@@ -4,7 +4,9 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-
+  # owned by interviewee
   has_many :interviews
+  # rails g migration AddUserToInterviews user:references 
+
 
 end
