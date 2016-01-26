@@ -14,6 +14,24 @@
 
 
 
+
+
+
+<%= datetime_select("article", "written_on", prompt: {day: 'Choose day', month: 'Choose month', year: 'Choose year'}) %>
+<br /><br />
+<%= datetime_select("article", "written_on", prompt: {hour: true}) %> # generic prompt for hours 
+<br /><br />
+<%= datetime_select("article", "written_on", prompt: true) %> # generic prompts for all
+<br /><br />
+
+
+
+
+
+
+
+
+
   <br />
   <a href="#" class="show-interviewee">Interviewee!</a>
   <br />
