@@ -1,0 +1,13 @@
+This is the index of the interview controller
+
+<br /> <br />
+
+<% if current_user.user_type == "interviewee" %>
+  <%= render "interviews/index_interviewee" %>
+<% elsif current_user.user_type == "interviewer"%>
+  <%= render "interviews/index_interviewer" %>
+<% elsif current_user.user_type == "admin"%>
+  <%= render "interviews/index_admin" %>
+<% else %>
+  The user type is incorrect
+<% end %>
