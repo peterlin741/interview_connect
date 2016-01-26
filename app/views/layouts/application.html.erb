@@ -1,67 +1,47 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>InterviewConnect</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <head>
+    <title>InterviewConnect</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
 
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
+    <%= render "layouts/nav" %>
 
-  <p><%= flash[:notice] %></p>
-  
-  <%= yield %>
-  
+    <% flash[:notice] %>
 
+    <div class="container">
+      <div class="row">
 
-  <br />
-  <a href="#" class="show-interviewee">Interviewee!</a>
-  <br />
-  <a href="#" class="show-interviewer">Interviewer!</a>
-  <br />
-  <a href="#" class="show-admin">Admin!</a>
-  <br />
+        <div class="col-md-8">
+          <%= yield %>
+        </div>
 
-  <br />
+        <div class="col-md-4">
+          <% if notice %>
+            <p class="alert alert-success"><%= notice %></p>
+          <% end %>
 
+          <% if alert %>
+            <p class="alert alert-danger"><%= alert %></p>
+          <% end %>
+        
+          <h2>About</h2>
 
+            <p>We know what you want.</p>
 
-  <div class="interviewee">
-    <p>Interviewee</p>
-  </div>
-
-  <br /><br />
-
-
-  <div class="interviewer">
-    <p>Interviewer</p>
-  </div>
-
-  <br /><br />
+            <p>You want to have a great career in finance, and you know that those fields are what will jumpstart you in your career path. But they are somewhat exclusive, and you will need to "break in..." 
+            How do you do actually break in?</p>
 
 
-  <div class="admin">
-    <p>Admin</p>
-  </div>
+            <p>We're bankers, salespeople, traders, and quants at Citi, Goldman Sachs, JP Morgan, MacKay Shields, Nomura, and UBS.</p> 
 
-  <br /><br />
+            <p>We've helped hundreds of people, who started from nothing, land dream jobs in finance. Regardless of your background, we believe that you deserve an opportunity to down-to-earth career advice, quality mock interviews, and real networking tips.</p>
 
-
-
-
-
-
-  <% if user_signed_in? %>
-    <li>Signed in as <%= current_user.email %></li>
-    <li><%= link_to 'Edit profile', edit_user_registration_path %></li>
-    <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
-  <% else %>
-    <li><%= link_to "Sign up", new_user_registration_path %></li>
-    <li><%= link_to "Login", new_user_session_path %></li>
-  <% end %>
-
-</body>
+        </div>
+      </div> <!-- .row -->
+    </div> <!-- .container -- >
+  </body>
 </html>

@@ -23,19 +23,6 @@
     <%= f.text_field :phone %> <br />
   </div> 
 
-  <div class="field">
-
-    <%= f.radio_button :user_type, "interviewee" %> Interviewee
-    <br />
-
-    <%= f.radio_button :user_type, "interviewer" %> Interviewer
-    <br />
-
-    <%= f.radio_button :user_type, "admin" %> Admin
-
-    <br /> <br />
-  </div>
-
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>

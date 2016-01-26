@@ -1,33 +1,19 @@
-Interviewees
+Scheduled Interviews
 
 <ul>
-  <% @interviewees.each do |user| %>
-    <li><%= user.first_name %> <%= user.last_name %></li>
+  <% @interviews_scheduled_for_interviewer.each do |interview| %>
+    <% info = "Interviewee: " + interview.interviewee_email + ", Time: " + interview.interview_date.to_s %>
+    <li><%= info%></li>
   <% end %>
 </ul>
 
-<br /> <br />
+<br /> 
 
-Interviewers
-
-<ul>
-  <% @interviewers.each do |user| %>
-    <li><%= user.first_name %> <%= user.last_name %></li>
-  <% end %>
-</ul>
-
-
-<br /> <br />
-
-Unscheduled Interviews
+Possible Interviews
 
 <ul>
   <% @interviews_unscheduled.each do |interview| %>
-    <% info = "Interviewee: " + interview.interviewee_email + ", Interviewer: " + "None" + ", Time: " + interview.interview_date.to_s %>
-    <li>
-
-    <%= link_to info, edit_interview_path(interview) %>
-
-    </li>
+    <% info = "Interviewee: " + interview.interviewee_email + ", Time: " + interview.interview_date.to_s %>
+    <li><%= link_to info, edit_interview_path(interview) %></li>
   <% end %>
 </ul>

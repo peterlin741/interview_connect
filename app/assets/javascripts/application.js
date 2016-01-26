@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require twitter/bootstrap
 //= require turbolinks
 //= require_tree .
 
@@ -71,6 +72,44 @@ ready = function(){
 $(document).ready(ready);
 $(document).on('page:load', ready);
 
+
+// from application.html.erb, can be reused later
+/*
+
+  <br />
+  <a href="#" class="show-interviewee">Interviewee!</a>
+  <br />
+  <a href="#" class="show-interviewer">Interviewer!</a>
+  <br />
+  <a href="#" class="show-admin">Admin!</a>
+  <br />
+
+  <br />
+
+
+
+  <div class="interviewee">
+    <p>Interviewee</p>
+  </div>
+
+  <br /><br />
+
+
+  <div class="interviewer">
+    <p>Interviewer</p>
+  </div>
+
+  <br /><br />
+
+
+  <div class="admin">
+    <p>Admin</p>
+  </div>
+
+  <br /><br />
+
+
+*/
 
 
 

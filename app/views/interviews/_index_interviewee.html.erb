@@ -1,28 +1,28 @@
-Interviewers
-
-<ul>
-  <% @interviewers.each do |user| %>
-    <li><%= user.first_name %> <%= user.last_name %></li>
-  <% end %>
-</ul>
-
-
-<br /> <br />
-
-<h2>Enter a few available times for the upcoming weeks</h2>
-
-
+<h3>Enter your available times</h3>
+<br /> 
 
 
 <%= form_for [@interview] do |f| %>
 
-  <%= f.text_field :interviewee_email, :value => current_user.email, :readonly => true %>
+  <%= f.text_field :interviewee_email, :value => current_user.email, :readonly => true %> 
+  <br /><br />
 
   <%= f.datetime_select(:interview_date, prompt: {day: 'Choose day', month: 'Choose month', year: 'Choose year'}, :start_year => 2016, :ampm => true, :minute_step => 15) %>
+  <br /><br />
 
-  <p><%= f.submit %></p>
+
+  <p><%= f.submit "Request Interview Time" %></p>
 
 <% end %>
 
 
 <br /><br />
+
+<h3>Scheduled Interviews</h3>
+
+<ul>
+  <% @interviews_scheduled_for_interviewee.each do |interview| %>
+    <% info = "Interviewee: " + interview.interviewee_email + ", Time: " + interview.interview_date.to_s %>
+    <li><%= info%></li>
+  <% end %>
+</ul>
