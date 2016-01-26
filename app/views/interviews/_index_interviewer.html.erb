@@ -18,3 +18,16 @@ Interviewers
 
 
 <br /> <br />
+
+Unscheduled Interviews
+
+<ul>
+  <% @interviews_unscheduled.each do |interview| %>
+    <% info = "Interviewee: " + interview.interviewee_email + ", Interviewer: " + "None" + ", Time: " + interview.interview_date.to_s %>
+    <li>
+
+    <%= link_to info, edit_interview_path(interview) %>
+
+    </li>
+  <% end %>
+</ul>

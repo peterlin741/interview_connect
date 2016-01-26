@@ -20,10 +20,10 @@ class InterviewsController < ApplicationController
   end
 
   def create
-    @interview = Interview.new(interview_params)
+    @interview = Interview.new(interview_params1)
     if @interview.save
       current_user.interviews << @interview
-      flash[:notice] = "Interview saved!"
+      flash[:notice] = "Interview created!"
       redirect_to interviews_path
     else
       flash[:notice] = "Interview could not be created!"
@@ -31,10 +31,29 @@ class InterviewsController < ApplicationController
     end
   end
 
+  def edit
+    @interview = Interview.find(params[:id])
+  end
+
+  def update
+    @interview = Interview.find(params[:id])
+    if @interview.update(interview_params2)
+      flash[:notice] = "Interview updated!"
+      redirect_to interviews_path
+    else
+      flash[:notice] = "Interview could not be updated!"
+      redirect_to interviews_path
+    end
+  end
+
   private
 
-  def interview_params
+  def interview_params1
     params.require(:interview).permit(:interviewee_email,:interview_date)
+  end
+
+  def interview_params2
+    params.require(:interview).permit(:interviewer_email, :scheduled)
   end
 
 end

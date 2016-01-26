@@ -1,0 +1,8 @@
+  <%= form_for [@interview] do |f| %>
+
+    <%= f.text_field :interviewer_email, :value => current_user.email, :readonly => true %>
+    <%= f.text_field :scheduled, :value => true, :readonly => true %>
+
+    <p><%= f.submit %></p>
+
+  <% end %>
