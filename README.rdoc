@@ -3,3 +3,5 @@
 Requires Ruby 2.2.3 and Rails 4.2.5, Do rake db:create for POSTGRE Database
 
 This website is for setting up mock interviews, matching potential interviewees with interviewers.
+
+https://interview-connect.herokuapp.com/
