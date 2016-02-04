@@ -16,7 +16,7 @@
 //= require turbolinks
 //= require_tree .
 
-// THIS IS THE TEST BRANCH
+//= require google-instant-hangouts
 
 var showInterviewee = function() {
   $('.interviewee').show();
