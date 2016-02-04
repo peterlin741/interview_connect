@@ -24,7 +24,12 @@ class InterviewsController < ApplicationController
 
   def create
     @interview = Interview.new(interview_params1)
-    if @interview.save
+
+    if @interview.interview_date < Time.now
+      flash[:notice] = "Interview could not be updated!"
+      redirect_to interviews_path
+    elsif @interview.save
+      # if @interview.save
       current_user.interviews << @interview
       flash[:notice] = "Interview created!"
       redirect_to interviews_path
@@ -40,6 +45,7 @@ class InterviewsController < ApplicationController
 
   def update
     @interview = Interview.find(params[:id])
+
     if @interview.update(interview_params2)
       flash[:notice] = "Interview updated!"
       redirect_to interviews_path
