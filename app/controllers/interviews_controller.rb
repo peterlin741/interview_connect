@@ -49,6 +49,11 @@ class InterviewsController < ApplicationController
     end
   end
 
+  def destroy
+    Interview.find(params[:id]).destroy
+    redirect_to interviews_path
+  end
+
   private
 
   def interview_params1

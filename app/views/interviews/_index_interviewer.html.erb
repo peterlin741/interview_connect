@@ -3,7 +3,7 @@ Scheduled Interviews
 <ul>
   <% @interviews_scheduled_for_interviewer.each do |interview| %>
     <% info = "Interviewee: " + interview.interviewee_email + ", Time: " + interview.interview_date.to_s %>
-    <li><%= info%></li>
+    <li><%= info%> <%= link_to "Cancel Interview", interview, method: :delete, data: {confirm: "are you sure?"} %></li>
   <% end %>
 </ul>
 
@@ -14,6 +14,6 @@ Possible Interviews
 <ul>
   <% @interviews_unscheduled.each do |interview| %>
     <% info = "Interviewee: " + interview.interviewee_email + ", Time: " + interview.interview_date.to_s %>
-    <li><%= link_to info, edit_interview_path(interview) %></li>
+    <li><%= info %> <%= link_to "Schedule Interview", edit_interview_path(interview) %></li>
   <% end %>
 </ul>

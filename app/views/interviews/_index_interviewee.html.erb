@@ -7,7 +7,7 @@
   <%= f.text_field :interviewee_email, :value => current_user.email, :readonly => true %> 
   <br /><br />
 
-  <%= f.datetime_select(:interview_date, prompt: {day: 'Choose day', month: 'Choose month', year: 'Choose year'}, :start_year => 2016, :ampm => true, :minute_step => 15) %>
+  <%= f.datetime_select(:interview_date, prompt: {day: 'Choose day', month: 'Choose month', year: 'Choose year'}, :start_year => 2016, :end_year => Date.today.year + 1, :ampm => true, :minute_step => 15) %>
   <br /><br />
 
 
@@ -23,7 +23,7 @@
 <ul>
   <% @interviews_scheduled_for_interviewee.each do |interview| %>
     <% info = "Interviewee: " + interview.interviewee_email + ", Time: " + interview.interview_date.to_s %>
-    <li><%= info%></li>
+    <li><%= info%> <%= link_to "Cancel Interview", interview, method: :delete, data: {confirm: "are you sure?"} %></li>
   <% end %>
 </ul>
 
@@ -34,7 +34,7 @@
 <ul>
   <% @interviews_unscheduled_for_interviewee.each do |interview| %>
     <% info = "Interviewee: " + interview.interviewee_email + ", Time: " + interview.interview_date.to_s %>
-    <li><%= info%></li>
+    <li><%= info%> <%= link_to "Cancel Interview", interview, method: :delete, data: {confirm: "are you sure?"} %></li>
   <% end %>
 </ul>
 
