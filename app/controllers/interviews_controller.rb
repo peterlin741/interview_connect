@@ -25,7 +25,7 @@ class InterviewsController < ApplicationController
   def create
     @interview = Interview.new(interview_params1)
 
-    if @interview.interview_date < Time.now
+    if not @interview || @interview.interview_date < Time.now
       flash[:notice] = "Interview could not be updated!"
       redirect_to interviews_path
     elsif @interview.save
