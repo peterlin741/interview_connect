@@ -40,7 +40,6 @@ gem "therubyracer"
 gem 'less-rails', github: 'metaskills/less-rails'
 gem "twitter-bootstrap-rails"
 
-gem 'jquery-rails'
 gem "google-instant-hangouts" 
 
 group :development, :test do
