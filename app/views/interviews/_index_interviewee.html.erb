@@ -21,23 +21,23 @@
 
 <h3>Scheduled Interviews</h3>
 
-<ul>
+<table class="table table-striped">
   <% @interviews_scheduled_for_interviewee.each do |interview| %>
     <% info = "Interviewee: " + interview.interviewee_email + ", " + interview.interview_date.strftime("%a %B %d, %Y %l:%M %p %Z") %>
-    <li><%= info%> <%= link_to "Cancel Interview", interview, method: :delete, data: {confirm: "are you sure?"} %></li>
+    <tr><td><%= info%> <%= link_to "Cancel Interview", interview, method: :delete, data: {confirm: "are you sure?"} %></td></tr>
   <% end %>
-</ul>
+</table>
 
 <br /><br />
 
 <h3>Requested Interview Times</h3>
 
-<ul>
+<table class="table table-striped">
   <% @interviews_unscheduled_for_interviewee.each do |interview| %>
     <% info = "Interviewee: " + interview.interviewee_email + ", " + interview.interview_date.strftime("%a %B %d, %Y %l:%M %p %Z") %>
-    <li><%= info%> <%= link_to "Cancel Interview", interview, method: :delete, data: {confirm: "are you sure?"} %></li>
+    <tr><td><%= info%> <%= link_to "Cancel Interview", interview, method: :delete, data: {confirm: "are you sure?"} %></td></tr>
   <% end %>
-</ul>
+</table>
 
 
 
