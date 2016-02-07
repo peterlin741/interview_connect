@@ -1,6 +1,5 @@
-<h3>Enter your available times</h3>
+<h3>Enter Your Available Times</h3>
 <br /> 
-
 
 <%= form_for [@interview] do |f| %>
 
@@ -8,11 +7,14 @@
     <%= f.text_field :interviewee_email, :value => current_user.email, :readonly => true %> 
   </div>
 
-  <%= f.datetime_select(:interview_date, prompt: {day: 'Choose day', month: 'Choose month', year: 'Choose year'}, :start_year => 2016, :end_year => Date.today.year + 1, :ampm => true, :minute_step => 15) %>
-  <br /><br />
+  <div class="col-sm-9">
+    <%= f.datetime_select(:interview_date, prompt: {day: 'Choose day', month: 'Choose month', year: 'Choose year'}, :start_year => 2016, :end_year => Date.today.year + 1, :ampm => true, :minute_step => 15) %>
+  </div>
 
 
-  <p><%= f.submit "Request Interview Time" %></p>
+  <div class="col-sm-3">
+    <p><%= f.submit "Request Interview Time", :class => 'btn btn-primary' %></p>
+  </div>
 
 <% end %>
 
@@ -23,8 +25,12 @@
 
 <table class="table table-striped">
   <% @interviews_scheduled_for_interviewee.each do |interview| %>
-    <% info = "Interviewee: " + interview.interviewee_email + ", " + interview.interview_date.strftime("%a %B %d, %Y %l:%M %p %Z") %>
-    <tr><td><%= info%> <%= link_to "Cancel Interview", interview, method: :delete, data: {confirm: "are you sure?"} %></td></tr>
+    <tr>
+      <td width="20%"><%= User.where(email: interview.interviewer_email).first.first_name %> <%= User.where(email: interview.interviewer_email).first.last_name %></td>
+      <td width="20%"><%= interview.interviewer_email %></td>
+      <td width="40%"><%= interview.interview_date.strftime("%a %B %d, %Y %l:%M %p %Z") %></td>
+      <td width="20%"><%= link_to "Cancel Interview", interview, :class => 'btn btn-danger', method: :delete, data: {confirm: "Are you sure you want to cancel?"} %></td>
+    </tr>
   <% end %>
 </table>
 
@@ -34,8 +40,11 @@
 
 <table class="table table-striped">
   <% @interviews_unscheduled_for_interviewee.each do |interview| %>
-    <% info = "Interviewee: " + interview.interviewee_email + ", " + interview.interview_date.strftime("%a %B %d, %Y %l:%M %p %Z") %>
-    <tr><td><%= info%> <%= link_to "Cancel Interview", interview, method: :delete, data: {confirm: "are you sure?"} %></td></tr>
+    <tr>
+
+      <td width="80%"><%= interview.interview_date.strftime("%a %B %d, %Y %l:%M %p %Z") %></td>
+      <td width="20%"><%= link_to "Cancel Request", interview, :class => 'btn btn-warning', method: :delete, data: {confirm: "Are you sure you want to cancel?"} %></td>
+    </tr>
   <% end %>
 </table>
 

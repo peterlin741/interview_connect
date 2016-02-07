@@ -21,7 +21,7 @@ Interviewees
 
 <ul>
   <% @interviewees.each do |user| %>
-    <li><%= user.first_name %> <%= user.last_name %></li>
+    <li><%= user.first_name %> <%= user.last_name %> <%= user.email %></li>
   <% end %>
 </ul>
 
@@ -31,7 +31,7 @@ Interviewers
 
 <ul>
   <% @interviewers.each do |user| %>
-    <li><%= user.first_name %> <%= user.last_name %></li>
+    <li><%= user.first_name %> <%= user.last_name %> <%= user.email %></li>
   <% end %>
 </ul>
 
@@ -42,7 +42,7 @@ Admins
 
 <ul>
   <% @admins.each do |user| %>
-    <li><%= user.first_name %> <%= user.last_name %></li>
+    <li><%= user.first_name %> <%= user.email %></li>
   <% end %>
 </ul>
 

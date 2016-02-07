@@ -13,42 +13,21 @@
 
     <% flash[:notice] %>
 
+    <div class="container-fluid">
+      <% if false %>
+        <p class="alert alert-success"><%= notice %></p>
+      <% end %>
+
+      <% if alert %>
+        <p class="alert alert-danger"><%= alert %></p>
+      <% end %>
+    </div>
+
     <div class="container">
       <div class="row">
-
-  <!--       <div class="col-md-8">  -->
           <%= yield %>
+      </div>
+    </div>
 
-          
-
- <!--         </div> -->
-
-<!-- 
-        <div class="col-md-4">
-          <% if notice %>
-            <p class="alert alert-success"><%= notice %></p>
-          <% end %>
-
-          <% if alert %>
-            <p class="alert alert-danger"><%= alert %></p>
-          <% end %>
-        
-          <h2>About</h2>
-
-            <p>We know what you want.</p>
-
-            <p>You want to have a great career in finance, and you know that those fields are what will jumpstart you in your career path. But they are somewhat exclusive, and you will need to "break in..." 
-            How do you do actually break in?</p>
-
-
-            <p>We're bankers, salespeople, traders, and quants at Citi, Goldman Sachs, JP Morgan, MacKay Shields, Nomura, and UBS.</p> 
-
-            <p>We've helped hundreds of people, who started from nothing, land dream jobs in finance. Regardless of your background, we believe that you deserve an opportunity to down-to-earth career advice, quality mock interviews, and real networking tips.</p>
-
-        </div>
--->
-
-      </div> <!-- .row -->
-    </div> <!-- .container -- >
   </body>
 </html>
