@@ -4,42 +4,50 @@
 <%= devise_error_messages! %>
 
 <div class="form-group">
-    <%= f.label :first_name, class: "col-sm-2 control-label" %>
-    <div class="col-sm-6">
+    <%= f.label :first_name, "First Name", class: "col-sm-2 control-label" %>
+    <div class="col-sm-9">
         <%= f.text_field :first_name, class: "form-control",autofocus: true %>
     </div>
 </div>
 
 <div class="form-group">
-    <%= f.label :last_name, class: "col-sm-2 control-label" %>
-    <div class="col-sm-6">
+    <%= f.label :last_name, "Last Name", class: "col-sm-2 control-label" %>
+    <div class="col-sm-9">
         <%= f.text_field :last_name, class: "form-control",autofocus: true %>
     </div>
 </div>
 
 <div class="form-group">
     <%= f.label :email, class: "col-sm-2 control-label" %>
-    <div class="col-sm-6">
+    <div class="col-sm-9">
         <%= f.email_field :email, class: "form-control" %>
     </div>
 </div>
 
 <div class="form-group">
     <%= f.label :phone, class: "col-sm-2 control-label" %>
-    <div class="col-sm-6">
+    <div class="col-sm-9">
         <%= f.text_field :phone, class: "form-control" %>
     </div>
 </div>
 
 <div class="form-group">
 
-    <%= f.radio_button :user_type, "interviewee" %> Interviewee
+    <%= f.label :user_type, "User Type",  class: "col-sm-2 control-label" %>
+
+    <div class="col-sm-9">
+        <%= f.radio_button :user_type, "interviewee" %> Interviewee
+    </div>
     <br />
 
-    <%= f.radio_button :user_type, "interviewer" %> Interviewer
+    <div class="col-sm-9">
+        <%= f.radio_button :user_type, "interviewer" %> Interviewer
+    </div>
     <br />
 
-    <%= f.radio_button :user_type, "admin" %> Admin
+    <div class="col-sm-9 col-md-offset-2">
+        <%= f.radio_button :user_type, "admin" %> Admin
+    </div>
 
     <br /> <br />
 
@@ -47,17 +55,16 @@
 
 <div class="form-group">
     <%= f.label :password, class: "col-sm-2 control-label" %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <div class="col-sm-6">
+
+    <div class="col-sm-9">
         <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
     </div>
+
 </div>
 
 <div class="form-group">
-    <%= f.label :password_confirmation, class: "col-sm-2 control-label" %>
-    <div class="col-sm-6">
+    <%= f.label :password_confirmation, "Password Confirmation", class: "col-sm-2 control-label" %>
+    <div class="col-sm-9">
         <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
     </div>
 </div>
