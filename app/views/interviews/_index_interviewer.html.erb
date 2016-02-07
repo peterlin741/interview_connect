@@ -1,15 +1,27 @@
-Scheduled Interviews
+<div class="row">
+  <div class="col-md-offset-5">
+    <%= instant_hangout %> 
+  </div>
+</div>
+
+
+<h3>Scheduled Interviews</h3>
 
 <table class="table table-striped">
   <% @interviews_scheduled_for_interviewer.each do |interview| %>
-    <% info = "Interviewee: " + interview.interviewee_email + ", " + interview.interview_date.strftime("%a %B %d, %Y %l:%M %p %Z") %>
-    <tr><td><%= info%> <%= link_to "Cancel Interview", interview, method: :delete, data: {confirm: "are you sure?"} %></td></tr>
+
+    <tr>
+      <td width="20%"><%= interview.interviewee_email %></td>
+      <td width="60%"><%= interview.interview_date.strftime("%a %B %d, %Y %l:%M %p %Z") %></td>
+      <td width="20%"><%= link_to "Cancel Interview", interview, method: :delete, data: {confirm: "are you sure?"} %></td>
+    </tr>
+
   <% end %>
 </table>
 
 <br /> 
 
-Possible Interviews
+<h3>Possible Interviews</h3>
 
 <table class="table table-striped">
   <% @interviews_unscheduled.each do |interview| %>
@@ -22,4 +34,3 @@ Possible Interviews
   <% end %>
 </table>
 
-<%= instant_hangout %> 
