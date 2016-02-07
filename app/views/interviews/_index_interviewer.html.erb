@@ -9,10 +9,34 @@
 <table class="table table-striped">
   <% @interviews_scheduled_for_interviewer.each do |interview| %>
 
+      <!-- Interviewee Notes Model -->
+      <div class="modal fade" id="intervieweeNotes" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Interviewee Notes</h4>
+          </div>
+          <div class="modal-body">
+            ...
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <tr>
       <td width="20%"><%= User.where(email: interview.interviewee_email).first.first_name %> <%= User.where(email: interview.interviewee_email).first.last_name %></td>
       <td width="20%"><%= interview.interviewee_email %></td>
-      <td width="40%"><%= interview.interview_date.strftime("%a %B %d, %Y %l:%M %p %Z") %></td>
+      <td width="30%"><%= interview.interview_date.strftime("%a %B %d, %Y %l:%M %p %Z") %></td>
+      <td width="10%">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#intervieweeNotes">
+          Interviewee Notes
+        </button>
+      </td>
       <td width="20%"><%= link_to "Cancel Interview", interview, :class => 'btn btn-danger', method: :delete, data: {confirm: "Are you sure you want to cancel?"} %></td>
     </tr>
   <% end %>
@@ -25,16 +49,43 @@
 <table class="table table-striped">
   <% @interviews_unscheduled.each do |interview| %>
 
+    <!-- Interviewee Notes Model -->
+    <div class="modal fade" id="intervieweeNotes" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Interviewee Notes</h4>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
     <tr>
       <td width="20%"><%= User.where(email: interview.interviewee_email).first.first_name %> <%= User.where(email: interview.interviewee_email).first.last_name %></td>
       <td width="20%"><%= interview.interviewee_email %></td>
       <td width="30%"><%= interview.interview_date.strftime("%a %B %d, %Y %l:%M %p %Z") %></td>
 
       <% if interview.interview_date > Time.now %>
-        <td width="10%"></td>
+        <td width="10%">
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#intervieweeNotes">
+            Interviewee Notes
+          </button>
+        </td>
         <td width="20%"><%= link_to "Schedule Interview", edit_interview_path(interview), :class => 'btn btn-success' %></td>
       <% else %>
-        <td width="10%"></td>
+        <td width="10%">
+          <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#intervieweeNotes">
+            Interviewee Notes
+          </button>
+        </td>
         <td width="20%"><%= link_to "Delete Interview", interview, :class => 'btn btn-warning', method: :delete, data: {confirm: "Are you sure you want to cancel?"} %></td>
       <% end %>
 
