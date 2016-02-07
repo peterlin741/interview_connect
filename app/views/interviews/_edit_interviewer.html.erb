@@ -1,8 +1,14 @@
   <%= form_for [@interview] do |f| %>
 
-    Interviewee: <%= @interview.interviewee_email %>
-    Time: <%= @interview.interview_date %> <br /><br />
+    <h3>Interviewee</h3>
 
+    <table class="table table-striped">
+
+      <tr><td><%= User.where(email: @interview.interviewee_email).first.first_name %> <%= User.where(email: @interview.interviewee_email).first.last_name %></td></tr>
+      <tr><td><%= @interview.interviewee_email %></td></tr>
+      <tr><td><%= @interview.interview_date.strftime("%a %B %d, %Y %l:%M %p %Z") %></td></tr>
+
+    </table>
 
     <div class="hidden">
 
@@ -11,6 +17,6 @@
 
     </div>
 
-    <p><%= f.submit "Confirm Interview" %></p>
+    <p><%= f.submit "Confirm Interview", :class => 'btn btn-primary' %></p>
 
   <% end %>
