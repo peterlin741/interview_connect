@@ -15,7 +15,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel">Interviewee Notes</h4>
+            <h4 class="modal-title" id="myModalLabel">Interviewee Feedback</h4>
           </div>
           <div class="modal-body">
             ...
@@ -34,7 +34,7 @@
       <td width="30%"><%= interview.interview_date.strftime("%a %B %d, %Y %l:%M %p %Z") %></td>
       <td width="10%">
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#intervieweeNotes">
-          Interviewee Notes
+          Add Feedback
         </button>
       </td>
       <td width="20%"><%= link_to "Cancel Interview", interview, :class => 'btn btn-danger', method: :delete, data: {confirm: "Are you sure you want to cancel?"} %></td>
@@ -55,7 +55,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="myModalLabel">Interviewee Notes</h4>
+          <h4 class="modal-title" id="myModalLabel">Interviewee Feedback</h4>
         </div>
         <div class="modal-body">
           ...
@@ -76,16 +76,12 @@
       <% if interview.interview_date > Time.now %>
         <td width="10%">
           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#intervieweeNotes">
-            Interviewee Notes
+            Add Feedback
           </button>
         </td>
         <td width="20%"><%= link_to "Schedule Interview", edit_interview_path(interview), :class => 'btn btn-success' %></td>
       <% else %>
-        <td width="10%">
-          <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#intervieweeNotes">
-            Interviewee Notes
-          </button>
-        </td>
+        <td width="10%"></td>
         <td width="20%"><%= link_to "Delete Interview", interview, :class => 'btn btn-warning', method: :delete, data: {confirm: "Are you sure you want to cancel?"} %></td>
       <% end %>
 
