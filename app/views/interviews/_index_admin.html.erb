@@ -1,50 +1,67 @@
-Scheduled Interviews
+<h3>Scheduled Interviews</h3>
 
-<ul>
+<table class="table table-striped">
   <% @interviews_scheduled.each do |interview| %>
-    <li>Interviewee: <%= interview.interviewee_email %>,  Interviewer: <%= interview.interviewer_email %>, When: <%= interview.interview_date %></li>
+    <tr>
+      <td width="30%">Interviewee: <%= interview.interviewee_email %></td>
+      <td width="30%">Interviewer: <%= interview.interviewer_email %></td>
+      <td width="40%"><%= interview.interview_date.strftime("%a %B %d, %Y %l:%M %p %Z") %></td>
+    </tr>
   <% end %>
-</ul>
+</table>
 <br />
 
-Unscheduled Interviews
+<h3>Unscheduled Interviews</h3>
 
-<ul>
+<table class="table table-striped">
   <% @interviews_unscheduled.each do |interview| %>
-    <li>Interviewee: <%= interview.interviewee_email %>,  Interviewer: <%= interview.interviewer_email %>, When: <%= interview.interview_date %></li>
+    <tr>
+      <td width="30%">Interviewee: <%= interview.interviewee_email %></td>
+      <td width="30%"></td>
+      <td width="40%"><%= interview.interview_date.strftime("%a %B %d, %Y %l:%M %p %Z") %></td>
+    </tr>
   <% end %>
-</ul>
+</table>
 
 <br />
 
-Interviewees
+<h3>Interviewees</h3>
 
-<ul>
+<table class="table table-striped">
   <% @interviewees.each do |user| %>
-    <li><%= user.first_name %> <%= user.last_name %> <%= user.email %></li>
+    <tr>
+      <td width="30%"><%= user.first_name %> <%= user.last_name %></td>
+      <td width="70%"><%= user.email %></td>
+    </tr>
   <% end %>
-</ul>
+</table>
 
 <br /> <br />
 
-Interviewers
+<h3>Interviewers</h3>
 
-<ul>
+<table class="table table-striped">
   <% @interviewers.each do |user| %>
-    <li><%= user.first_name %> <%= user.last_name %> <%= user.email %></li>
+    <tr>
+      <td width="30%"><%= user.first_name %> <%= user.last_name %></td>
+      <td width="70%"><%= user.email %></td>
+    </tr>
   <% end %>
-</ul>
+</table>
 
 
 <br /> <br />
 
-Admins
+<h3>Admins</h3>
 
-<ul>
+<table class="table table-striped">
   <% @admins.each do |user| %>
-    <li><%= user.first_name %> <%= user.email %></li>
+    <tr>
+      <td width="30%"><%= user.first_name %> <%= user.last_name %></td>
+      <td width="70%"><%= user.email %></td>
+    </tr>
   <% end %>
-</ul>
+</table>
 
 <br />
 
