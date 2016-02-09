@@ -11,10 +11,9 @@
     </table>
 
     <div class="hidden">
-
       <%= f.text_field :interviewer_email, :value => current_user.email, :readonly => true %> 
       <%= f.text_field :scheduled, :value => true, :readonly => true %> <br /><br />
-
+      <%= f.text_field :feedback, :value => @interview.feedback, :readonly => true %> 
     </div>
 
     <p><%= f.submit "Confirm Interview", :class => 'btn btn-primary' %></p>

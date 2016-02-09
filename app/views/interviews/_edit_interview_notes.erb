@@ -1,0 +1,12 @@
+<%= form_for @interview do |f| %>
+
+  <div class="modal-body">
+      <div class="hidden">
+        <%= f.text_field :interviewer_email, :value => current_user.email, :readonly => true %> 
+        <%= f.text_field :scheduled, :value => true, :readonly => true %> <br /><br />
+      </div>
+    <%= f.text_area :feedback, :value => @interview.feedback, :cols => 75, :rows => 8 %>
+    <%= f.submit "Confirm Interview", :class => 'btn btn-primary' %>
+  </div>
+
+<% end %>

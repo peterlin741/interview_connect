@@ -6,34 +6,61 @@
 
 <h3>Scheduled Interviews</h3>
 
-<table class="table table-striped">
-  <% @interviews_scheduled_for_interviewer.each do |interview| %>
 
-      <!-- Interviewee Notes Model -->
-      <div class="modal fade" id="intervieweeNotes" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<% @interviews_scheduled_for_interviewer.each do |interview| %>
+
+
+    <% @model_id = "#intervieweeNotes" + interview.to_s %>
+    <%= @model_id %>
+    
+    <!-- Interviewee Notes Model -->
+    <div class="modal fade" id="intervieweeNotes" + <%= interview.to_s %> tabindex="-1" role="dialog" aria-labelledby="myModalLabel">  
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <h4 class="modal-title" id="myModalLabel">Interviewee Feedback</h4>
           </div>
-          <div class="modal-body">
-            ...
-          </div>
+
+          <% @id = "#intervieweeNotes" + interview.to_s %>
+          <%= @id %>
+
+          <%= form_for interview do |f| %>
+
+            <div class="modal-body">
+                <div class="hidden">
+                  <%= f.text_field :interviewer_email, :value => current_user.email, :readonly => true %> 
+                  <%= f.text_field :scheduled, :value => true, :readonly => true %> <br /><br />
+                </div>
+              <%= f.text_area :feedback, :value => interview.feedback, :cols => 75, :rows => 8 %>
+              <%= f.submit "Confirm Interview", :class => 'btn btn-primary' %>
+            </div>
+
+          <% end %>
+
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+            <button type="button" class="btn btn-primary">Save changes</button>                
           </div>
         </div>
       </div>
-    </div>
+    </div> <!-- end of model -->
+
+<% end %>
+
+
+<table class="table table-striped">
+  <% @interviews_scheduled_for_interviewer.each do |interview| %>
+
+    <% @model_id = "#intervieweeNotes" + interview.to_s %>
+    <%= @model_id %>
 
     <tr>
       <td width="20%"><%= User.where(email: interview.interviewee_email).first.first_name %> <%= User.where(email: interview.interviewee_email).first.last_name %></td>
       <td width="20%"><%= interview.interviewee_email %></td>
       <td width="30%"><%= interview.interview_date.strftime("%a %B %d, %Y %l:%M %p %Z") %></td>
       <td width="10%">
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#intervieweeNotes">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#intervieweeNotes" + <%= interview.to_s %>>
           Add Feedback
         </button>
       </td>
@@ -58,7 +85,7 @@
           <h4 class="modal-title" id="myModalLabel">Interviewee Feedback</h4>
         </div>
         <div class="modal-body">
-          ...
+          <%= interview.feedback %>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

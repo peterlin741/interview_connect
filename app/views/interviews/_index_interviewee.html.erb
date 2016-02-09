@@ -24,10 +24,10 @@
 <h3>Scheduled Interviews</h3>
 
 <table class="table table-striped">
-  <% @interviews_scheduled_for_interviewee.each do |interview| %>
+  <% @interviews_scheduled_for_interviewee.each do |interview| %>r
 
     <!-- Interviewer Notes Model -->
-    <div class="modal fade" id="interviewerNotes" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal fade" id="interviewerNotes" + <% interview %> tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -35,7 +35,7 @@
           <h4 class="modal-title" id="myModalLabel">Interviewer Feedback</h4>
         </div>
         <div class="modal-body">
-          ...
+          <%= interview %>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -73,7 +73,7 @@
           <h4 class="modal-title" id="myModalLabel">Interviewer Feedback</h4>
         </div>
         <div class="modal-body">
-          ...
+          <%= interview.feedback %>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
