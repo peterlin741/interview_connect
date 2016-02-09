@@ -60,45 +60,13 @@
 <table class="table table-striped">
   <% @interviews_unscheduled.each do |interview| %>
 
-    <% @count = @count + 1 %>
-    <!-- Interviewee Notes Model -->
-    <div class="modal fade" id="interviewerNotes_<%= @count %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel">Notes For Interviewee</h4>
-          </div>
-          
-          <%= form_for interview do |f| %>
-            <div class="modal-body">
-                <div class="hidden">
-                  <%= f.text_field :interviewer_email, :value => nil, :readonly => true %> 
-                  <%= f.text_field :scheduled, :value => false, :readonly => true %> <br /><br />
-                </div>
-              <%= f.text_area :feedback, :value => interview.feedback, :cols => 70, :rows => 8 %>
-            </div>
-
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              <%= f.submit "Save Changes", :class => 'btn btn-primary' %>
-            </div>
-          <% end %>
-        </div>
-      </div>
-    </div>
-
     <tr>
       <td width="20%"><%= User.where(email: interview.interviewee_email).first.first_name %> <%= User.where(email: interview.interviewee_email).first.last_name %></td>
       <td width="20%"><%= interview.interviewee_email %></td>
       <td width="30%"><%= interview.interview_date.strftime("%a %B %d, %Y %l:%M %p %Z") %></td>
 
       <% if interview.interview_date > Time.now %>
-        <td width="10%">
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#interviewerNotes_<%= @count %>">
-            For Interviewee
-          </button>
-        </td>
+        <td width="10%"></td>
         <td width="20%"><%= link_to "Schedule Interview", edit_interview_path(interview), :class => 'btn btn-success' %></td>
       <% else %>
         <td width="10%"></td>
