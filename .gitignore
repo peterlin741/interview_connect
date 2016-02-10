@@ -11,3 +11,8 @@
 /log/*
 !/log/.keep
 /tmp
+
+# Ignore my AWS Keys
+# heroku config:set AWS_ACCESS_KEY_ID=
+# heroku config:set AWS_SECRET_ACCESS_KEY=
+/config/local_env.yml
