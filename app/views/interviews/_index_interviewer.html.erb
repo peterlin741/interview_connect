@@ -9,8 +9,8 @@
 <table class="table table-striped">
 <% @count = 0 %>
 <% @interviews_scheduled_for_interviewer.each do |interview| %>
-
     <% @count = @count + 1 %>
+
     <!-- Interviewee Notes Model -->
     <div class="modal fade" id="intervieweeNotes_<%= @count %>" + <%= interview.to_s %> tabindex="-1" role="dialog" aria-labelledby="myModalLabel">  
       <div class="modal-dialog" role="document">
@@ -40,9 +40,14 @@
 
     <!-- Table of Interviews -->
     <tr>
-      <td width="20%"><%= User.where(email: interview.interviewee_email).first.first_name %> <%= User.where(email: interview.interviewee_email).first.last_name %></td>
+      <td width="10%"><%= User.where(email: interview.interviewee_email).first.first_name %> <%= User.where(email: interview.interviewee_email).first.last_name %></td>
       <td width="20%"><%= interview.interviewee_email %></td>
       <td width="30%"><%= interview.interview_date.strftime("%a %B %d, %Y %l:%M %p %Z") %></td>
+      <td width="10%">
+        <% if User.where(email: interview.interviewee_email).first.resume.exists? %>
+          <%= link_to "Resume", User.where(email: interview.interviewee_email).first.resume.url, :class => 'btn btn-primary' %>
+        <% end %>
+      </td>
       <td width="10%">
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#intervieweeNotes_<%= @count %>">
           Add Feedback
@@ -61,12 +66,16 @@
   <% @interviews_unscheduled.each do |interview| %>
 
     <tr>
-      <td width="20%"><%= User.where(email: interview.interviewee_email).first.first_name %> <%= User.where(email: interview.interviewee_email).first.last_name %></td>
+      <td width="10%"><%= User.where(email: interview.interviewee_email).first.first_name %> <%= User.where(email: interview.interviewee_email).first.last_name %></td>
       <td width="20%"><%= interview.interviewee_email %></td>
       <td width="30%"><%= interview.interview_date.strftime("%a %B %d, %Y %l:%M %p %Z") %></td>
 
       <% if interview.interview_date > Time.now %>
-        <td width="10%"></td>
+        <td width="10%">
+          <% if User.where(email: interview.interviewee_email).first.resume.exists? %>
+            <%= link_to "Resume", User.where(email: interview.interviewee_email).first.resume.url, :class => 'btn btn-primary' %>
+          <% end %>
+        </td>
         <td width="20%"><%= link_to "Schedule Interview", edit_interview_path(interview), :class => 'btn btn-success' %></td>
       <% else %>
         <td width="10%"></td>
