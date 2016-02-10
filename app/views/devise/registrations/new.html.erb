@@ -1,6 +1,6 @@
 
 <h2>Sign up</h2>
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: 'form-horizontal'}) do |f| %>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: 'form-horizontal', :multipart => true}) do |f| %>
 <%= devise_error_messages! %>
 
 <div class="form-group">
@@ -49,9 +49,16 @@
         <%= f.radio_button :user_type, "admin" %> Admin
     </div>
 
-    <br /> <br />
+    <br /> 
 
 </div> 
+
+<div class="form-group">
+    <%= f.label :resume, class: 'col-sm-2 control-label'  %>
+    <div class="col-sm-9">
+        <%= f.file_field :resume %>
+    </div>
+</div>
 
 <div class="form-group">
     <%= f.label :password, class: "col-sm-2 control-label" %>
